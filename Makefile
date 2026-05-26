@@ -88,17 +88,7 @@ lint: lint-golang lint-shell lint-docker ## Lint project source
 
 .PHONY: fmt
 fmt: ## Format the source code
-	go run mvdan.cc/gofumpt@latest -l -w -extra .
-	go run golang.org/x/tools/cmd/goimports@latest -l -w .
-	go run github.com/daixiang0/gci@latest write \
-		--skip-generated \
-		--custom-order \
-		-s standard \
-		-s default \
-		-s prefix\(github.com/alkurbatov/golang-grpc-service-template\) \
-		-s blank \
-		-s dot \
-		.
+	golangci-lint fmt
 
 .PHONY: unit-tests
 unit-tests: ## Run unit tests
