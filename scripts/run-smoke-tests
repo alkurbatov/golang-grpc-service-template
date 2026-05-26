@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -uxo pipefail
+
+PROJECT=${CI_PIPELINE_ID:-grpc-go-service-template}
+COMPOSE="docker compose -f deployments/docker-compose.yaml -f deployments/docker-compose.test.yaml -p ${PROJECT}"
+LOGFILE="smoke.log"
+
+${COMPOSE} up \
+    --build \
+    --abort-on-container-exit
+status="$?"
+
+# NB (alkurbatov): Nonzero exit code of $(COMPOSE) means that we failed to bring up the services.
+# Zero exit code means that smoke test worked well and we need to check containers exit codes.
+if [ "${status}" -eq 0 ]
+then
+  status=$(${COMPOSE} ps -qa | xargs docker inspect -f '{{ .State.ExitCode }}' | grep -cv '^0' | tr -d ' ')
+fi
+
+${COMPOSE} ps -qa | xargs docker inspect -f 'service: {{.Name}}, exit code: {{ .State.ExitCode }}'
+${COMPOSE} logs --timestamps --no-color > ${LOGFILE}
+
+# Gracefully stop the containers.
+# We have to use retries as sometimes containers refuse to stop.
+n=0
+until [ "$n" -ge 3 ]
+do
+  ${COMPOSE} down -v && break
+  ((n++))
+  sleep 5
+done
+
+if [ "${status}" -eq 0 ]
+then
+    echo "Smoke test successful!"
+    exit 0
+fi
+
+echo "Smoke test has failed! For full log please refer to ${LOGFILE}."
+exit "${status}"

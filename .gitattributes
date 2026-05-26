@@ -1,0 +1,5 @@
+*.pb.go -diff
+*.gen.go -diff
+*_gen.go -diff
+*_mock.go -diff
+go.sum -diff

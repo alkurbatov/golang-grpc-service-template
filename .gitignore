@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+Icon[]
+
+# Emacs things
+.dir-locals.el
+.project
+.projectile
+
+# IDEs
+/.idea/
+/.vscode/
+
+# Markdownlint style
+/*.rb
+
+# Outputs
+/coverage.*
+/*.out
+/report.xml
+/smoke.log
+
+# Build artifacts
+/dist/
+
+# Secrets
+.netrc

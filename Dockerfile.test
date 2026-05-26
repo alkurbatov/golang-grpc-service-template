@@ -1,0 +1,11 @@
+FROM golang:1.26.1
+
+WORKDIR /test
+
+COPY Makefile go.mod go.sum ./
+RUN make download
+
+COPY pkg pkg
+COPY test/smoke smoke
+
+ENTRYPOINT ["go", "test", "-v", "-count=1", "./smoke/..."]

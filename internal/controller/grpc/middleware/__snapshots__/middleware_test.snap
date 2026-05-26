@@ -1,0 +1,80 @@
+
+[TestLoggingInterceptors/No_metadata - 1]
+Incoming request request_id=GS method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors/No_metadata - 2]
+Processing ended status=OK duration=xxx request_id=GS method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors/No_metadata - 3]
+Incoming request request_id=GS method=Echo/UnaryStream
+---
+
+[TestLoggingInterceptors/No_metadata - 4]
+Processing ended status=OK duration=xxx request_id=GS method=Echo/UnaryStream
+---
+
+[TestLoggingInterceptors/Metadata_with_request_ID_only - 1]
+Incoming request request_id=TT method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors/Metadata_with_request_ID_only - 2]
+Processing ended status=OK duration=xxx request_id=TT method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors/Metadata_with_request_ID_only - 3]
+Incoming request request_id=TT method=Echo/UnaryStream
+---
+
+[TestLoggingInterceptors/Metadata_with_request_ID_only - 4]
+Processing ended status=OK duration=xxx request_id=TT method=Echo/UnaryStream
+---
+
+[TestLoggingInterceptors/Metadata_with_trace_ID_only - 1]
+Incoming request request_id=GS external_trace_id=abcd method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors/Metadata_with_trace_ID_only - 2]
+Processing ended status=OK duration=xxx request_id=GS external_trace_id=abcd method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors/Metadata_with_trace_ID_only - 3]
+Incoming request request_id=GS external_trace_id=abcd method=Echo/UnaryStream
+---
+
+[TestLoggingInterceptors/Metadata_with_trace_ID_only - 4]
+Processing ended status=OK duration=xxx request_id=GS external_trace_id=abcd method=Echo/UnaryStream
+---
+
+[TestLoggingInterceptors/Full_metadata - 1]
+Incoming request request_id=TT external_trace_id=abcd method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors/Full_metadata - 2]
+Processing ended status=OK duration=xxx request_id=TT external_trace_id=abcd method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors/Full_metadata - 3]
+Incoming request request_id=TT external_trace_id=abcd method=Echo/UnaryStream
+---
+
+[TestLoggingInterceptors/Full_metadata - 4]
+Processing ended status=OK duration=xxx request_id=TT external_trace_id=abcd method=Echo/UnaryStream
+---
+
+[TestLoggingInterceptors - 1]
+Incoming request request_id=GS method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors - 2]
+Processing ended status=OK duration=xxx request_id=GS method=Echo/UnaryUnary
+---
+
+[TestLoggingInterceptors - 3]
+Incoming request request_id=GS method=Echo/UnaryStream
+---
+
+[TestLoggingInterceptors - 4]
+Processing ended status=OK duration=xxx request_id=GS method=Echo/UnaryStream
+---

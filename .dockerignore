@@ -1,0 +1,11 @@
+*.log
+*.md
+*.out
+*.xml
+.*
+Dockerfile*
+coverage*
+deployments/
+dist/
+docs/
+proto/

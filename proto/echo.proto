@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package examples.v1;
+option go_package = "github.com/alkurbatov/golang-grpc-service-template/pkg/echopb/v1";
+
+service Echo {
+  rpc StreamStream (stream Request) returns (stream Response);
+  rpc StreamUnary (stream Request) returns (Response);
+  rpc UnaryStream (Request) returns (stream Response);
+  rpc UnaryUnary (Request) returns (Response);
+}
+
+message Request {
+  string text = 1;
+}
+
+message Response {
+  string text = 1;
+}

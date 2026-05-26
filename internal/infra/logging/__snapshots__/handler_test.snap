@@ -1,0 +1,8 @@
+
+[TestLogWithoutAttrs - 1]
+Test message
+---
+
+[TestLogWithContextAttrs - 1]
+Test message duration=xxx ctx_key1=value1 ctx_key2=value2 ctx_key3=value3 child=logger
+---

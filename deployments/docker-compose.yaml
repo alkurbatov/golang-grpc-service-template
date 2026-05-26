@@ -1,0 +1,15 @@
+services:
+  templatesrv:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    networks:
+      - public
+    ports:
+      - "8888:8888"
+      - "50051:50051"
+
+networks:
+  public:
+    ipam:
+      driver: default

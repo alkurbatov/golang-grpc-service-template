@@ -1,0 +1,13 @@
+services:
+  templatesrv:
+    environment:
+      - GRACEFUL_SHUTDOWN_PRESTOP_TIMEOUT_SEC=1
+      - LOG_LEVEL=debug
+      - JSON_LOGGING=false
+
+  smoke-test:
+    build:
+      context: ..
+      dockerfile: Dockerfile.test
+    networks:
+      - public

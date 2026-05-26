@@ -1,0 +1,12 @@
+services:
+  templatesrv:
+    build:
+      context: ..
+      dockerfile: Dockerfile.debug
+    environment:
+      - GRACEFUL_SHUTDOWN_PRESTOP_TIMEOUT_SEC=1
+      - LOG_LEVEL=debug
+      - JSON_LOGGING=false
+      - GRPC_REFLECTION=true
+    ports:
+      - "2345:2345"
