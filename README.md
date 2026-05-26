@@ -49,7 +49,7 @@ For additional options and tweaks please refer to [the official documentation](h
 │   ├── config
 │   ├── controller
 │   │   ├── grpc                  # gRPC API handlers
-│   │   └── grpc                  # HTTP API handlers (e.g. metrics)
+│   │   └── http                  # HTTP API handlers (e.g. metrics)
 │   └── infra                     # infrastructure layer, contains abstractions of gRPC server etc
 │
 ├── pkg                           # code that could be reused by other projects
