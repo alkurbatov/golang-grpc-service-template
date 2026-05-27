@@ -31,8 +31,8 @@ update: ## Update all Golang modules at once
 	go get -u ./...
 	go mod tidy
 
-.PHONY: install-tools
-install-tools: download ## Install dev tools
+.PHONY: deps
+deps: download ## Install dev tools
 # NB (alkurbatov): Add dev packages (e.g. protoc) you want to install here.
 #
 # (!) Do not forget to specify version, commit or tag.
