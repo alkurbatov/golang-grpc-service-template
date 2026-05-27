@@ -1,6 +1,5 @@
 # macOS
 .DS_Store
-Icon[]
 
 # Emacs things
 .dir-locals.el
@@ -10,9 +9,6 @@ Icon[]
 # IDEs
 /.idea/
 /.vscode/
-
-# Markdownlint style
-/*.rb
 
 # Outputs
 /coverage.*

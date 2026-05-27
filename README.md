@@ -68,7 +68,7 @@ For additional options and tweaks please refer to [the official documentation](h
 ├── .hadolint.yaml
 ├── .pre-commit-config.yaml
 │
-├── CONTRIBUTING.md               # decribes programing techniques recommended to use in the project
+├── CONTRIBUTING.md               # describes programming techniques recommended to use in the project
 │
 ├── Dockerfile                    # main Dockerfile to build image for production
 ├── Dockerfile.debug              # Dockerfile to build image for remote debugging
