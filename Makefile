@@ -6,11 +6,15 @@ SHELL := bash
 
 SERVICE_NAME = templatesrv
 BUILD_DIR = dist
+THIRD_PARTY_DIR = third_party
 SEED := on
 
 PROTOC = protoc --proto_path=./proto/ --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative
 COMPOSE = docker compose -f deployments/docker-compose.yaml -f deployments/docker-compose.dev.yaml
 COMPOSE_DEBUG = docker compose -f deployments/docker-compose.yaml -f deployments/docker-compose.debug.yaml
+
+GOLANGCI_LINT = $(THIRD_PARTY_DIR)/golangci-lint
+GOLANGCI_LINT_VERSION := v2.12.2
 
 # NB (alkurbatov): Although this template has small coverage threshold
 # production-ready services must have >= 80% coverage.
@@ -36,7 +40,8 @@ deps: download ## Install dev tools
 # NB (alkurbatov): Add dev packages (e.g. protoc) you want to install here.
 #
 # (!) Do not forget to specify version, commit or tag.
-	@echo Installing dev tools
+	@echo Installing dependencies
+	./scripts/install-golangci-lint $(THIRD_PARTY_DIR) $(GOLANGCI_LINT_VERSION)
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.33.0
 	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
 
@@ -72,7 +77,7 @@ clean: stop
 
 .PHONY: lint-golang
 lint-golang: ## Lint Golang source code
-	golangci-lint run
+	$(GOLANGCI_LINT) run --fix
 	go tool deadcode -test ./... | tee deadcode.out && [ ! -s deadcode.out ]
 
 .PHONY: lint-shell
@@ -85,10 +90,6 @@ lint-docker: ## Lint Dockerfile manifests
 
 .PHONY: lint
 lint: lint-golang lint-shell lint-docker ## Lint project source
-
-.PHONY: fmt
-fmt: ## Format the source code
-	golangci-lint fmt
 
 .PHONY: unit-tests
 unit-tests: ## Run unit tests

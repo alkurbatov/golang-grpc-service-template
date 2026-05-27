@@ -126,7 +126,6 @@ go run golang.org/x/tools/cmd/gonew@latest github.com/alkurbatov/golang-grpc-ser
    ```
 
 1. Install `protoc` (to generate `protobuf` code) as described [here](https://grpc.io/docs/protoc-installation/).
-1. Install `golangci-lint` (to lint `Golang` code) according to [this guide](https://golangci-lint.run/welcome/install/).
 1. Install `shellcheck` (to lint `bash` scripts) according to [this guide](https://github.com/koalaman/shellcheck#installing).
 1. Install `pre-commit` (to run linters before commit) according to [this guide](https://pre-commit.com/#install).
 

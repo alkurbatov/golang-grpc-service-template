@@ -21,3 +21,6 @@
 
 # Secrets
 .netrc
+
+# Third party tools
+/third_party/
