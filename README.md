@@ -41,6 +41,8 @@ For additional options and tweaks please refer to [the official documentation](h
 │   ├── docker-compose.test.yaml
 │   └── docker-compose.yaml
 │
+├── dist                          # compiled service binaries, created by 'make build'
+│
 ├── docs                          # project documentation
 │
 ├── internal                      # internally used code that shouldn't be imported by library users
@@ -61,11 +63,14 @@ For additional options and tweaks please refer to [the official documentation](h
 ├── test
 │   └── smoke                     # smoke tests
 │
+├── third_party                   # locally installed third-party tools, populated by 'make deps'
+│
 ├── .dockerignore
 ├── .gitignore
 │
 ├── .golangci.yaml                # golangci-lint configuration
 ├── .hadolint.yaml
+├── .mdlstyle.rb                  # markdownlint style configuration
 ├── .pre-commit-config.yaml
 │
 ├── CONTRIBUTING.md               # describes programming techniques recommended to use in the project
