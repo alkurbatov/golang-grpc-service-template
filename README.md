@@ -1,6 +1,6 @@
 # golang-grpc-service-template
 
-Template for fast creation of new `Golang gRPC` service.
+Template for fast creation of new Golang gRPC service.
 Contains many ready-to-use solutions for routine tasks like metrics,logging etc.
 
 ## Configuration
@@ -10,25 +10,25 @@ For additional options and tweaks please refer to [the official documentation](h
 
 ### General
 
-| Env variable                            | Type | Description                                                                             | Default value |
-|:----------------------------------------|:-----|:----------------------------------------------------------------------------------------|:--------------|
-| `GRPC_LISTEN_ADDRESS`                   | str  | `gRPC API` listening address and port                                                   | 0.0.0.0:50051 |
-| `HTTP_LISTEN_ADDRESS`                   | str  | `HTTP API` listening address and port to get `Prometheus` metrics.                      | 0.0.0.0:8888  |
-| `GRACEFUL_SHUTDOWN_PRESTOP_TIMEOUT_SEC` | int  | Time for service to sleep before starting to reject new requests                        | 10            |
-| `GRACEFUL_SHUTDOWN_GRPC_TIMEOUT_SEC`    | int  | Time for `gRPC` server to process all the remaining requests before being shutting down | 280           |
+| Env variable                          | Type | Description                                                                            | Default value |
+|:--------------------------------------|:-----|:---------------------------------------------------------------------------------------|:--------------|
+| GRPC_LISTEN_ADDRESS                   | str  | gRPC API listening address and port.                                                   | 0.0.0.0:50051 |
+| HTTP_LISTEN_ADDRESS                   | str  | HTTP API listening address and port to get Prometheus metrics.                         | 0.0.0.0:8888  |
+| GRACEFUL_SHUTDOWN_PRESTOP_TIMEOUT_SEC | int  | Time for service to sleep before starting to reject new requests.                      | 10            |
+| GRACEFUL_SHUTDOWN_GRPC_TIMEOUT_SEC    | int  | Time for gRPC server to process all the remaining requests before being shutting down. | 280           |
 
 ### Logging
 
-| Env variable   | Type | Description                                                         | Default value |
-|:---------------|:-----|:--------------------------------------------------------------------|:--------------|
-| `LOG_LEVEL`    | str  | Logging level of the application (`debug`, `info`, `warn`, `error`) | `info`        |
-| `JSON_LOGGING` | bool | Enable logging in `JSON` format                                     | true          |
+| Env variable | Type | Description                                                  | Default value |
+|:-------------|:-----|:-------------------------------------------------------------|:--------------|
+| LOG_LEVEL    | str  | Logging level of the application (debug, info, warn, error). | info          |
+| JSON_LOGGING | bool | Enable logging in JSON format.                               | true          |
 
 ### Other
 
-| Env variable          | Type | Description                                                                                                     | Default value |
-|:----------------------|:-----|:----------------------------------------------------------------------------------------------------------------|:--------------|
-| `PROF_LISTEN_ADDRESS` | str  | `pprof` profiler listening address and port. Should differ from `HTTP_LISTEN_ADDRESS` due to security concerns. |               |
+| Env variable        | Type | Description                                                                                                 | Default value |
+|:--------------------|:-----|:------------------------------------------------------------------------------------------------------------|:--------------|
+| PROF_LISTEN_ADDRESS | str  | pprof profiler listening address and port. Should differ from HTTP_LISTEN_ADDRESS due to security concerns. |               |
 
 ## Project structure
 
@@ -87,7 +87,7 @@ The directories not used in this template but could be needed in some cases.
 
 #### `test/testdata`
 
-To store artifacts used during unit and smoke tests, e.g. audio samples, `JSON` files, tokens etc.
+To store artifacts used during unit and smoke tests, e.g. audio samples, JSON files, tokens etc.
 
 ### Naming convention
 
@@ -111,13 +111,6 @@ go run golang.org/x/tools/cmd/gonew@latest github.com/alkurbatov/golang-grpc-ser
 
 ## Development and testing
 
-### Setup dev environment
-
-1. Install `protoc` (to generate `protobuf` code) as described [here](https://grpc.io/docs/protoc-installation/).
-1. Install `golangci-lint` (to lint `Golang` code) according to [this guide](https://golangci-lint.run/welcome/install/).
-1. Install `shellcheck` (to lint `bash` scripts) according to [this guide](https://github.com/koalaman/shellcheck#installing).
-1. Install `pre-commit` (to run linters before commit) according to [this guide](https://pre-commit.com/#install).
-
 ### Prepare to work with the project
 
 1. Clone project repository:
@@ -126,12 +119,16 @@ go run golang.org/x/tools/cmd/gonew@latest github.com/alkurbatov/golang-grpc-ser
    git clone git@github.com:alkurbatov/golang-grpc-service-template.git
    ```
 
-1. Install additional development tools, `protobuf` plugins and download
-   dependencies:
+1. Install project dependencies:
 
    ```bash
-   make install-tools
+   make deps
    ```
+
+1. Install `protoc` (to generate `protobuf` code) as described [here](https://grpc.io/docs/protoc-installation/).
+1. Install `golangci-lint` (to lint `Golang` code) according to [this guide](https://golangci-lint.run/welcome/install/).
+1. Install `shellcheck` (to lint `bash` scripts) according to [this guide](https://github.com/koalaman/shellcheck#installing).
+1. Install `pre-commit` (to run linters before commit) according to [this guide](https://pre-commit.com/#install).
 
 1. Install `pre-commit` hooks by running:
 
