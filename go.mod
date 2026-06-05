@@ -1,6 +1,6 @@
 module github.com/alkurbatov/golang-grpc-service-template
 
-go 1.26.3
+go 1.26.4
 
 require (
 	github.com/gkampitakis/go-snaps v0.5.22
