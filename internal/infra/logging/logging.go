@@ -11,8 +11,6 @@ import (
 var ErrInvalidLevel = errors.New("invalid log level value")
 
 func parseLogLevel(level string) (slog.Level, error) {
-	// NB (alkurbatov): Log level names are kept in sync with Python services
-	// to make configuration compatible.
 	switch strings.ToLower(level) {
 	case "debug":
 		return slog.LevelDebug, nil
