@@ -13,16 +13,16 @@ if ! command -v curl >/dev/null 2>&1; then
 fi
 
 installed_version=""
-if [ -x "$BINARY" ]; then
+if [ -x "${BINARY}" ]; then
   installed_version=$("$BINARY" --version 2>&1 | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)
 fi
 
-if [ "$installed_version" = "$DESIRED_VERSION" ]; then
-  echo "golangci-lint $DESIRED_VERSION already installed in $INSTALL_DIR"
+if [ "${installed_version}" = "${DESIRED_VERSION}" ]; then
+  echo "golangci-lint ${DESIRED_VERSION} already installed in ${INSTALL_DIR}"
   exit 0
 fi
 
-echo "Installing golangci-lint $DESIRED_VERSION into $INSTALL_DIR (was: ${installed_version:-none})"
-mkdir -p "$INSTALL_DIR"
+echo "Installing golangci-lint ${DESIRED_VERSION} into ${INSTALL_DIR} (was: ${installed_version:-none})"
+mkdir -p "${INSTALL_DIR}"
 curl -sSfL "https://raw.githubusercontent.com/golangci/golangci-lint/${DESIRED_VERSION}/install.sh" \
-  | sh -s -- -b "$INSTALL_DIR" "$DESIRED_VERSION"
+  | sh -s -- -b "${INSTALL_DIR}" "${DESIRED_VERSION}"
