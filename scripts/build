@@ -22,8 +22,9 @@ export GOFLAGS="-mod=readonly"
 #
 # Additional compilation flags:
 # -mod=readonly - avoid changes in go.mod/go.sum during build.
-# --gcflags=-l=4 - increases chance of functions inlining, could cause ~5% performance improvement.
-# --gcflags="all=-N -l" - makes it possible to debug with delve.
+# -gcflags=-l=4 - increases chance of functions inlining, could cause ~5% performance improvement.
+# -gcflags="all=-N -l" - makes it possible to debug with delve.
+# -gcflags="-m=2 -l" - show where data is allocated (stack or heap) aka "escape analysis".
 #
 # Additional linker flags:
 # -ldflags "-s -w" - strip debug information from binary.
@@ -33,7 +34,7 @@ export GOFLAGS="-mod=readonly"
 
 if [[ "${DEBUG}" -eq "1" ]]; then
     echo "Building for debugging..."
-    CGO_ENABLED=0 go build --gcflags="all=-N -l" -o "${dst}" "${src}"/*.go
+    CGO_ENABLED=0 go build -gcflags="all=-N -l" -o "${dst}" "${src}"/*.go
 else
     echo "Building for production..."
     CGO_ENABLED=0 go build -o "${dst}" "${src}"/*.go
