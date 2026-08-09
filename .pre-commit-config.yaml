@@ -27,13 +27,13 @@ repos:
         args: ["--severity=warning"]
 
   - repo: https://github.com/hadolint/hadolint
-    rev: v2.14.0
+    rev: v2.15.1
     hooks:
       - id: hadolint
         args: ["-c", ".hadolint.yaml"]
 
   - repo: https://github.com/markdownlint/markdownlint
-    rev: v0.15.0
+    rev: v0.18.0
     hooks:
       - id: markdownlint
         args: ["--style", ".mdlstyle.rb"]

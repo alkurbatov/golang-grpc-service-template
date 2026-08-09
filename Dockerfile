@@ -34,8 +34,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
 
 COPY --from=build /build/dist .
 
-RUN chown -R nobody:nogroup /app \
+RUN chown -R 65534:65534 /app \
     && chmod -R 700 /app
-USER nobody
+USER 65534:65534 # nobody:nogroup
 
 ENTRYPOINT ["./templatesrv"]
