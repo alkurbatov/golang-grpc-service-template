@@ -1,4 +1,4 @@
-FROM golang:1.26.4 AS build
+FROM golang:1.27.0 AS build
 
 WORKDIR /build
 
@@ -30,12 +30,14 @@ ENV LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timez
+    && echo $TZ > /etc/timezone
 
 COPY --from=build /build/dist .
 
 RUN chown -R 65534:65534 /app \
     && chmod -R 700 /app
-USER 65534:65534 # nobody:nogroup
+
+# nobody:nogroup
+USER 65534:65534
 
 ENTRYPOINT ["./templatesrv"]

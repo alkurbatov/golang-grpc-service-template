@@ -6,8 +6,8 @@ import (
 	"log/slog"
 	"strings"
 	"time"
+	"uuid"
 
-	"github.com/google/uuid"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 
@@ -30,7 +30,7 @@ func shouldIgnore(method string) bool {
 
 // generateRequestID generates new request ID in form of service prefix + UUID.
 func generateRequestID() string {
-	return servicePrefix + "-" + uuid.New().String()
+	return servicePrefix + "-" + uuid.NewV4().String()
 }
 
 // injectRequestID injects request ID into gRPC metadata.
