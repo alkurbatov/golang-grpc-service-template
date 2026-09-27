@@ -14,7 +14,7 @@ COMPOSE = docker compose -f deployments/docker-compose.yaml -f deployments/docke
 COMPOSE_DEBUG = docker compose -f deployments/docker-compose.yaml -f deployments/docker-compose.debug.yaml
 
 GOLANGCI_LINT = $(THIRD_PARTY_DIR)/golangci-lint
-GOLANGCI_LINT_VERSION := v2.13.1
+GOLANGCI_LINT_VERSION := v2.14.0
 
 # NB (alkurbatov): Although this template has small coverage threshold
 # production-ready services must have >= 80% coverage.
